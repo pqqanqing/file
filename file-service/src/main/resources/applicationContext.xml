@@ -17,7 +17,7 @@
           class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>file:/opt/wechat/config/file/sc.properties</value>
+                <value>file:/Users/panqingqing/githubWorkspaces/config/file/sc.properties</value>
             </list>
         </property>
     </bean>
@@ -90,7 +90,7 @@
     <!-- 导入项目配置文件地址 -->
     <bean class="com.wjs.common.base.properties.ProjectProperties">
         <property name="properties">
-            <util:properties location="file:/opt/wechat/config/file/sc.properties"/>
+            <util:properties location="file:/Users/panqingqing/githubWorkspaces/config/file/sc.properties"/>
             <!--<util:properties location="file:F:\\ideaWorkSpace\\config\\file\\sc.properties"/>-->
         </property>
     </bean>

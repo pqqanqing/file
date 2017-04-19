@@ -1,8 +1,8 @@
 package com.wjs.file.domain.filesystem;
 
-import com.wjs.common.base.base.BaseEntity;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
+import com.wjs.common.base.base.BaseEntity;
 import com.wjs.common.base.execption.BusinessExecption;
 import com.wjs.file.api.dto.FileSystemDTO;
 import com.wjs.file.common.util.QiNiuUtil;
@@ -15,6 +15,7 @@ import java.io.File;
 
 import static com.wjs.common.base.util.BeanPropertiesUtil.copyProperties;
 import static com.wjs.file.common.util.QiNiuUtil.download;
+import static java.lang.System.currentTimeMillis;
 import static java.util.Objects.isNull;
 import static org.apache.commons.codec.digest.DigestUtils.sha256Hex;
 
@@ -40,7 +41,14 @@ public class FileSystem extends BaseEntity {
         this.qiniu = qiniu;
         this.file = file;
         this.fileName = file.getName();
-        this.fileName4Sha256 = sha256Hex(fileName) + "" + System.currentTimeMillis();
+        this.fileName4Sha256 = generateFileName4Sha256(fileName);
+    }
+
+    private String generateFileName4Sha256(String fileName) {
+        int pointIndex = fileName.lastIndexOf(".");
+        String name = fileName.substring(0, pointIndex);
+        String fileName4Sha256 = sha256Hex(name + currentTimeMillis()) + fileName.substring(pointIndex);
+        return fileName4Sha256;
     }
 
     public void upload() {
