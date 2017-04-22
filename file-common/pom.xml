@@ -203,10 +203,10 @@
         </dependency>
 
         <!-- jms configuration -->
-        <dependency>
+        <!--<dependency>
             <groupId>javax.jms</groupId>
             <artifactId>jms</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!-- qiniu configuration -->
         <dependency>

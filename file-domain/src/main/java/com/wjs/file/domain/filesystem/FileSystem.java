@@ -40,7 +40,7 @@ public class FileSystem extends BaseEntity {
         this.module = module;
         this.qiniu = qiniu;
         this.file = file;
-        this.fileName = file.getName();
+        this.file = null;
         this.fileName4Sha256 = generateFileName4Sha256(fileName);
     }
 
